@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html lang="en" data-ambience="evening">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TASA BARBERSHOP — We Cut, We Shave, We Brew · Est. 2017</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================================================
+       TASA BARBERSHOP — MODERN-INDUSTRIAL + CLASSIC BARBERSHOP SYSTEM
+       Palette: Charcoal #1A1A1A, Warm Wood #8B5A2B / #A67C52, Concrete #9A9A9A,
+                Warm Amber / Neon Orange #FF7A1A, Off-white #F5F1EA, Black #000000
+       Geometry: Strict 0px architectural edges — zero pill shapes anywhere.
+       ========================================================================== */
+
+    :root {
+      --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+      /* Exact Brand Palette — Evening Lamps Mode (Default) */
+      --bg-base: #1A1A1A;
+      --bg-deep: #111111;
+      --bg-panel: #22211F;
+      --bg-black: #000000;
+
+      --ink-primary: #F5F1EA;
+      --ink-secondary: #C5BEB4;
+      --ink-muted: #9A9A9A;
+
+      --wood: #8B5A2B;
+      --wood-light: #A67C52;
+      --wood-dark: #633E1B;
+      --neon: #FF7A1A;
+      --offwhite: #F5F1EA;
+      --concrete: #9A9A9A;
+
+      --bg-menu: #F5F1EA;
+      --ink-menu: #1A1A1A;
+      --ink-menu-muted: #5C5750;
+
+      --hairline: rgba(245, 241, 234, 0.14);
+      --hairline-strong: rgba(245, 241, 234, 0.28);
+      --wood-rule: rgba(166, 124, 82, 0.48);
+      --header-bg: rgba(16, 16, 16, 0.93);
+      --hero-scrim: linear-gradient(180deg, rgba(0, 0, 0, 0.68) 0%, rgba(16, 16, 16, 0.42) 46%, rgba(26, 26, 26, 0.98) 100%);
+    }
+
+    html[data-ambience="daylight"] {
+      --bg-base: #F5F1EA;
+      --bg-deep: #E8E3D9;
+      --bg-panel: #FAF8F4;
+      --bg-black: #1A1A1A;
+
+      --ink-primary: #1A1A1A;
+      --ink-secondary: #4A4641;
+      --ink-muted: #706B65;
+
+      --wood: #8B5A2B;
+      --wood-light: #A67C52;
+      --wood-dark: #5C3A19;
+      --neon: #D95E08;
+
+      --bg-menu: #1A1A1A;
+      --ink-menu: #F5F1EA;
+      --ink-menu-muted: #B0AAA0;
+
+      --hairline: rgba(26, 26, 26, 0.14);
+      --hairline-strong: rgba(26, 26, 26, 0.28);
+      --wood-rule: rgba(139, 90, 43, 0.45);
+      --header-bg: rgba(245, 241, 234, 0.94);
+      --hero-scrim: linear-gradient(180deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.34) 48%, rgba(26, 26, 26, 0.88) 100%);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-base);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-base);
+      color: var(--ink-primary);
+      transition: background-color 0.35s ease, color 0.35s ease;
+      overflow-x: hidden;
+    }
+
+    /* Raw concrete plaster micro-grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 900;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; padding: 0; }
+    :focus-visible { outline: 2px solid var(--neon); outline-offset: 2px; }
+
+    .wrap {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+    @media (min-width: 900px) {
+      .wrap { padding: 0 44px; }
+    }
+
+    /* Subtle white hexagonal LED ceiling pattern (Tasa signature lighting) */
+    .hex-ceiling-bg {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='72' viewBox='0 0 84 72'%3E%3Cpath d='M21 0 L63 0 L84 36 L63 72 L21 72 L0 36 Z' fill='none' stroke='%23FFFFFF' stroke-opacity='0.055' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 84px 72px;
+    }
+
+    /* Typography */
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--wood-light);
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 4.2vw, 3.35rem);
+      font-weight: 500;
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      margin: 10px 0 0;
+    }
+
+    .mono-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+    }
+
+    /* Subtle Orange Neon Sign Treatment */
+    .neon-sign {
+      color: #FF7A1A;
+      text-shadow: 0 0 14px rgba(255, 122, 26, 0.42), 0 0 32px rgba(255, 122, 26, 0.18);
+    }
+
+    /* Sharp Architectural Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 22px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid var(--hairline-strong);
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--wood);
+      border-color: var(--wood);
+      color: #F5F1EA;
+    }
+    .btn-primary:hover {
+      background-color: var(--wood-dark);
+      border-color: var(--wood-dark);
+    }
+
+    .btn-neon {
+      background-color: #FF7A1A;
+      border-color: #FF7A1A;
+      color: #000000;
+      font-weight: 500;
+    }
+    .btn-neon:hover {
+      background-color: #E3660D;
+      border-color: #E3660D;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--hairline-strong);
+      color: var(--ink-primary);
+    }
+    .btn-outline:hover {
+      border-color: var(--wood-light);
+      color: var(--wood-light);
+    }
+
+    .btn-hero-ghost {
+      border: 1px solid rgba(245, 241, 234, 0.48);
+      color: #F5F1EA;
+      background: rgba(0, 0, 0, 0.42);
+    }
+    .btn-hero-ghost:hover {
+      background: rgba(245, 241, 234, 0.12);
+      border-color: #F5F1EA;
+    }
+
+    /* ==========================================================================
+       HEADER
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--hairline);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 14px;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-wordmark {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      border-left: 1px solid var(--hairline-strong);
+      padding-left: 11px;
+      text-transform: uppercase;
+    }
+    @media (min-width: 1120px) {
+      .brand-sub { display: inline-block; }
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 22px;
+    }
+    @media (min-width: 920px) {
+      .nav-links { display: flex; }
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--ink-primary);
+      border-bottom-color: var(--neon);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ambience-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border: 1px solid var(--hairline-strong);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+    }
+    .ambience-toggle:hover {
+      border-color: var(--neon);
+      color: var(--ink-primary);
+    }
+
+    .lamp-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #FF7A1A;
+      display: inline-block;
+    }
+
+    .header-book {
+      padding: 9px 15px;
+      font-size: 10.5px;
+    }
+
+    .mobile-menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--hairline-strong);
+      font-family: var(--font-mono);
+      font-size: 14px;
+    }
+    @media (min-width: 920px) {
+      .mobile-menu-btn { display: none; }
+    }
+
+    .mobile-nav {
+      display: none;
+      border-top: 1px solid var(--hairline);
+      background-color: var(--bg-base);
+      padding: 16px 22px 22px;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--hairline);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       1. HERO — WE CUT, WE SHAVE, WE BREW
+       ========================================================================== */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      padding-top: 68px;
+      display: flex;
+      align-items: flex-end;
+      background-color: #000000;
+      overflow: hidden;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .hero-media { position: absolute; inset: 0; z-index: 1; }
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+      transition: opacity 0.6s ease;
+    }
+    .hero-photo-daylight { opacity: 0; object-position: center 50%; }
+    html[data-ambience="daylight"] .hero-photo-evening { opacity: 0; }
+    html[data-ambience="daylight"] .hero-photo-daylight { opacity: 1; }
+
+    .hero-scrim { position: absolute; inset: 0; z-index: 2; background: var(--hero-scrim); }
+
+    .hero-frame {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 68px 0 52px;
+      color: #F5F1EA;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: end;
+      border-top: 1px solid rgba(245, 241, 234, 0.22);
+      padding-top: 32px;
+    }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.4fr 0.9fr; gap: 56px; }
+    }
+
+    .hero-emblem {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #A67C52;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 6.2vw, 5.1rem);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      margin: 0;
+      color: #F5F1EA;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(245, 241, 234, 0.85);
+      margin: 0 0 26px;
+      max-width: 44ch;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-footnote {
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(245, 241, 234, 0.16);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 241, 234, 0.65);
+    }
+
+    /* ==========================================================================
+       SECTIONS BASE
+       ========================================================================== */
+    .section {
+      padding: 84px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .section-deep {
+      background-color: var(--bg-deep);
+    }
+
+    /* Wood-framed mirror border */
+    .wood-frame {
+      position: relative;
+      padding: 10px;
+      border: 2px solid var(--wood);
+      background-color: var(--bg-panel);
+    }
+    .wood-frame::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid var(--wood-rule);
+      pointer-events: none;
+    }
+
+    .photo-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 4px 2px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       2. ABOUT & SHOP ATMOSPHERE
+       ========================================================================== */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 44px;
+      margin-top: 40px;
+    }
+    @media (min-width: 900px) {
+      .about-layout { grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: start; }
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .editorial-lead {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.3vw, 2rem);
+      line-height: 1.35;
+      font-weight: 400;
+      margin: 0 0 20px;
+    }
+
+    .editorial-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink-secondary);
+      margin: 0 0 18px;
+    }
+
+    /* Interactive Shop Details Swatches */
+    .materials-box {
+      margin-top: 30px;
+      border-top: 1px solid var(--hairline-strong);
+      border-bottom: 1px solid var(--hairline-strong);
+    }
+    .materials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .swatch-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-bottom: 1px solid var(--hairline);
+    }
+    @media (min-width: 560px) {
+      .swatch-tabs { grid-template-columns: repeat(4, 1fr); }
+    }
+    .swatch-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 13px 11px;
+      border-right: 1px solid var(--hairline);
+      border-bottom: 2px solid transparent;
+      text-align: left;
+    }
+    .swatch-btn:last-child { border-right: none; }
+    .swatch-btn[aria-selected="true"] {
+      background-color: var(--bg-panel);
+      border-bottom-color: var(--neon);
+    }
+    .swatch-chip {
+      width: 100%;
+      height: 20px;
+      border: 1px solid var(--hairline-strong);
+    }
+    .swatch-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+    }
+    .swatch-detail { padding: 18px 0; }
+    .swatch-detail h4 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 500;
+      margin: 0 0 6px;
+    }
+    .swatch-detail p {
+      font-size: 14px;
+      color: var(--ink-secondary);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       3. SERVICES / IN-SHOP MENU LEDGER (PHP RATES)
+       ========================================================================== */
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      border-bottom: 1px solid var(--hairline-strong);
+      margin: 34px 0 30px;
+    }
+    .tab-btn {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding: 12px 0;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+    }
+    .tab-btn:hover { color: var(--ink-primary); }
+    .tab-btn[aria-selected="true"] {
+      color: var(--ink-primary);
+      border-bottom-color: var(--neon);
+    }
+
+    .ledger-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @media (min-width: 980px) {
+      .ledger-layout { grid-template-columns: 1.38fr 0.62fr; gap: 44px; align-items: start; }
+    }
+
+    .printed-menu {
+      background-color: var(--bg-menu);
+      color: var(--ink-menu);
+      padding: 34px 24px;
+      border: 8px solid #000000;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    }
+    @media (min-width: 640px) {
+      .printed-menu { padding: 42px 42px; }
+    }
+
+    .printed-menu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid currentColor;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+    .menu-stamp {
+      background-color: var(--ink-menu);
+      color: var(--bg-menu);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      line-height: 1.35;
+      padding: 8px 10px;
+      font-weight: 500;
+    }
+
+    .menu-group-heading {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--wood);
+      padding: 18px 0 8px;
+      border-bottom: 1px solid currentColor;
+      margin: 0;
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px dashed rgba(128, 120, 110, 0.35);
+    }
+    .service-name {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin: 0 0 4px;
+    }
+    .service-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-menu-muted);
+      margin: 0;
+    }
+    .service-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 7px;
+    }
+    .service-price {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .add-chip-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 11px;
+      border: 1px solid currentColor;
+      opacity: 0.85;
+    }
+    .add-chip-btn:hover,
+    .add-chip-btn.selected {
+      background-color: var(--wood);
+      border-color: var(--wood);
+      color: #F5F1EA;
+      opacity: 1;
+    }
+
+    .menu-footnote {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(128, 120, 110, 0.35);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-menu-muted);
+      line-height: 1.6;
+    }
+
+    /* Sticky Chair Sheet */
+    .chair-sheet {
+      border: 1px solid var(--hairline-strong);
+      background-color: var(--bg-panel);
+      padding: 26px;
+    }
+    @media (min-width: 980px) {
+      .chair-sheet { position: sticky; top: 90px; }
+    }
+    .chair-sheet h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 500;
+      margin: 6px 0 8px;
+    }
+    .chair-sheet-list {
+      list-style: none;
+      margin: 16px 0 18px;
+      padding: 0;
+      border-top: 1px solid var(--hairline);
+    }
+    .chair-sheet-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--hairline);
+      font-size: 13.5px;
+    }
+    .sheet-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0 18px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 18px;
+    }
+    .sheet-total-amt {
+      font-size: 18px;
+      color: var(--neon);
+      font-weight: 500;
+    }
+    .remove-item-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+    .remove-item-btn:hover { color: var(--neon); }
+
+    /* ==========================================================================
+       4. PACKAGES (3 ARCHITECTURAL COLUMNS)
+       ========================================================================== */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 40px;
+      border: 1px solid var(--hairline-strong);
+    }
+    @media (min-width: 820px) {
+      .packages-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .package-col {
+      padding: 34px 28px;
+      border-bottom: 1px solid var(--hairline-strong);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--bg-panel);
+    }
+    @media (min-width: 820px) {
+      .package-col {
+        border-bottom: none;
+        border-right: 1px solid var(--hairline-strong);
+      }
+      .package-col:last-child { border-right: none; }
+    }
+    .package-col.featured {
+      border-top: 3px solid var(--neon);
+    }
+    .package-price {
+      font-family: var(--font-mono);
+      font-size: 26px;
+      color: var(--neon);
+      margin: 14px 0 18px;
+      font-weight: 500;
+    }
+    .package-list {
+      list-style: none;
+      padding: 16px 0;
+      margin: 0 0 24px;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .package-list li {
+      padding: 6px 0;
+      font-size: 14.5px;
+      color: var(--ink-secondary);
+    }
+    .package-list li::before {
+      content: "— ";
+      color: var(--wood-light);
+    }
+
+    /* ==========================================================================
+       5. BRANCHES (8 LOCATIONS + MAPS)
+       ========================================================================== */
+    .branches-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 960px) {
+      .branches-split { grid-template-columns: 1.15fr 0.85fr; gap: 44px; align-items: start; }
+    }
+
+    .branch-list { border-top: 1px solid var(--hairline-strong); }
+    .branch-row {
+      width: 100%;
+      text-align: left;
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 14px;
+      border-bottom: 1px solid var(--hairline);
+      border-left: 3px solid transparent;
+      transition: background-color 0.2s ease, border-left-color 0.2s ease;
+    }
+    .branch-row:hover,
+    .branch-row.active {
+      background-color: var(--bg-panel);
+    }
+    .branch-row.active {
+      border-left-color: var(--neon);
+    }
+    .branch-num { font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted); }
+    .branch-row-name { font-family: var(--font-serif); font-size: 23px; font-weight: 500; line-height: 1.15; }
+    .branch-row-city {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+    .branch-flag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--neon);
+      border: 1px solid var(--neon);
+      padding: 3px 7px;
+    }
+
+    .branch-panel {
+      border: 1px solid var(--hairline-strong);
+      background-color: var(--bg-panel);
+      padding: 30px;
+    }
+    @media (min-width: 960px) {
+      .branch-panel { position: sticky; top: 90px; }
+    }
+    .branch-panel-title {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.08;
+      margin: 8px 0 18px;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 22px;
+      border-top: 1px solid var(--hairline);
+    }
+    .spec-table tr { border-bottom: 1px solid var(--hairline); }
+    .spec-table th {
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding: 11px 12px 11px 0;
+      width: 102px;
+      vertical-align: top;
+      font-weight: 400;
+    }
+    .spec-table td {
+      font-size: 14px;
+      color: var(--ink-primary);
+      padding: 11px 0;
+      line-height: 1.55;
+    }
+    .panel-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    /* ==========================================================================
+       6. GALLERY (4 EDITORIAL SHOP FRAMES)
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    @media (min-width: 760px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+
+    .gallery-card {
+      position: relative;
+      padding: 8px;
+      border: 1px solid var(--wood-rule);
+      background-color: var(--bg-panel);
+      text-align: left;
+      width: 100%;
+      transition: border-color 0.2s ease;
+    }
+    .gallery-card:hover { border-color: var(--neon); }
+    .gallery-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       7. PREMIUM PRODUCTS FOR SALE (COUNTER SHELF)
+       ========================================================================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--hairline-strong);
+      border-left: 1px solid var(--hairline-strong);
+    }
+    @media (min-width: 640px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 980px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .product-cell {
+      padding: 24px;
+      border-right: 1px solid var(--hairline-strong);
+      border-bottom: 1px solid var(--hairline-strong);
+      background-color: var(--bg-panel);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .product-brand {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--wood-light);
+    }
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 23px;
+      font-weight: 500;
+      margin: 6px 0 6px;
+      line-height: 1.15;
+    }
+    .product-note {
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .product-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--hairline);
+    }
+    .product-price {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--neon);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       8. FRANCHISING CTA
+       ========================================================================== */
+    .franchise-box {
+      border: 2px solid var(--wood);
+      background-color: #111111;
+      color: #F5F1EA;
+      padding: 44px 30px;
+    }
+    @media (min-width: 820px) {
+      .franchise-box {
+        padding: 56px 56px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 48px;
+        align-items: center;
+      }
+    }
+    .franchise-contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-left: 2px solid #FF7A1A;
+      padding-left: 22px;
+      margin-top: 24px;
+    }
+    @media (min-width: 820px) {
+      .franchise-contact-row { margin-top: 0; }
+    }
+    .franchise-value {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: #F5F1EA;
+      word-break: break-word;
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    .barber-rule {
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        #8A241B 0px,
+        #8A241B 28px,
+        #F5F1EA 28px,
+        #F5F1EA 56px,
+        #18314F 56px,
+        #18314F 84px
+      );
+    }
+
+    .site-footer {
+      background-color: #000000;
+      color: #F5F1EA;
+      padding: 64px 0 42px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(245, 241, 234, 0.14);
+    }
+    @media (min-width: 860px) {
+      .footer-grid { grid-template-columns: 1.25fr 1fr 1fr 1fr; }
+    }
+    .footer-heading {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #A67C52;
+      margin: 0 0 15px;
+    }
+    .footer-list { list-style: none; margin: 0; padding: 0; }
+    .footer-list li {
+      margin-bottom: 8px;
+      font-size: 13.5px;
+      color: rgba(245, 241, 234, 0.76);
+      line-height: 1.5;
+    }
+    .footer-list a:hover { color: #FF7A1A; }
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #9A9A9A;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       DRAWERS & LIGHTBOX (Sharp architectural modals, no alert/prompt)
+       ========================================================================== */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      background-color: rgba(0, 0, 0, 0.78);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 490px;
+      z-index: 810;
+      background-color: var(--bg-base);
+      color: var(--ink-primary);
+      border-left: 2px solid var(--wood);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .drawer.open { transform: translateX(0); }
+
+    .drawer-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 26px;
+      border-bottom: 1px solid var(--hairline-strong);
+    }
+    .drawer-body { padding: 26px; flex: 1; }
+
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-secondary);
+      margin-bottom: 7px;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 11px 13px;
+      background-color: var(--bg-panel);
+      color: var(--ink-primary);
+      border: 1px solid var(--hairline-strong);
+      font-family: var(--font-sans);
+      font-size: 14px;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--neon);
+    }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+    .slot-btn {
+      padding: 9px 6px;
+      border: 1px solid var(--hairline-strong);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-align: center;
+      color: var(--ink-secondary);
+    }
+    .slot-btn.active {
+      background-color: var(--wood);
+      border-color: var(--wood);
+      color: #F5F1EA;
+    }
+
+    .slip-box {
+      border: 2px solid var(--wood);
+      background-color: var(--bg-panel);
+      padding: 22px;
+    }
+    .form-error {
+      color: #FF7A1A;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      margin-bottom: 14px;
+      display: none;
+    }
+
+    /* Gallery Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 860;
+      background: rgba(0, 0, 0, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner {
+      max-width: 960px;
+      width: 100%;
+      border: 2px solid var(--wood);
+      background: #111111;
+      padding: 14px;
+      color: #F5F1EA;
+    }
+    .lightbox-inner img {
+      width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+      background: #000;
+    }
+    .lightbox-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      gap: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 22px;
+      z-index: 950;
+      background-color: #000000;
+      color: #F5F1EA;
+      border-left: 3px solid #FF7A1A;
+      padding: 13px 18px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand-lockup" aria-label="Tasa Barbershop Home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="6" cy="18" r="2.5"></circle>
+          <circle cx="18" cy="18" r="2.5"></circle>
+          <line x1="7.8" y1="16" x2="17" y2="3"></line>
+          <line x1="16.2" y1="16" x2="7" y2="3"></line>
+        </svg>
+        <span class="brand-wordmark">TASA</span>
+        <span class="brand-sub">Est. 2017</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Menu</a>
+        <a href="#packages">Packages</a>
+        <a href="#branches">Branches</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#products">Products</a>
+        <a href="#franchising">Franchising</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="ambienceToggle" class="ambience-toggle" aria-label="Switch shop lighting mood">
+          <span class="lamp-dot" aria-hidden="true"></span>
+          <span id="ambienceLabel">Evening</span>
+        </button>
+        <button type="button" id="openBookingHeader" class="btn btn-primary header-book">
+          Book Chair
+        </button>
+        <button type="button" id="mobileMenuBtn" class="mobile-menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle menu">
+          ≡
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#services" class="mobile-nav-link">Services &amp; Rates</a>
+      <a href="#packages" class="mobile-nav-link">Packages</a>
+      <a href="#branches" class="mobile-nav-link">8 Branches</a>
+      <a href="#gallery" class="mobile-nav-link">Gallery</a>
+      <a href="#products" class="mobile-nav-link">Products</a>
+      <a href="#franchising" class="mobile-nav-link">Franchising</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ======================================================================
+         1. HERO — WE CUT, WE SHAVE, WE BREW
+         ====================================================================== -->
+    <section class="hero">
+      <div class="hero-media">
+        <img
+          src="images/01-hero-evening.jpg"
+          alt="Tasa Barbershop interior under black dome pendants, concrete walls, and two-tone leather barber chairs"
+          class="hero-photo hero-photo-evening"
+        />
+        <img
+          src="images/05-shop-gallery.jpg"
+          alt="Tasa Barbershop concrete walls, vintage lantern sconces, floating mahogany stations, and two-tone leather chairs"
+          class="hero-photo hero-photo-daylight"
+        />
+      </div>
+      <div class="hero-scrim"></div>
+
+      <div class="wrap hero-frame">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-emblem">
+              <span>TASA BARBERSHOP</span>
+              <span>—</span>
+              <span>EST. 2017 · MMXVII</span>
+            </div>
+            <h1 class="hero-headline">
+              We Cut,<br />
+              We Shave,<br />
+              <span class="neon-sign">We Brew.</span>
+            </h1>
+          </div>
+
+          <div>
+            <p class="hero-copy">
+              A boutique barbershop born in Marikina in 2017. Built for unhurried haircuts, classic straight-razor shaves, and a fresh cup of coffee while you wait—across eight branches in Marikina, Quezon City, Pasig, and Antipolo.
+            </p>
+            <div class="hero-cta-row">
+              <button type="button" id="openBookingHero" class="btn btn-neon">Reserve a Chair</button>
+              <a href="#services" class="btn btn-hero-ghost">View Menu &amp; Rates</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-footnote">
+          <span>8 Branches · Marikina · Quezon City · Pasig · Antipolo</span>
+          <span>@tasabarbershop</span>
+          <span>Switch "Evening / Daylight" above to shift shop lighting</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. ABOUT — EST. 2017, BOUTIQUE PREMIUM BARBERSHOP
+         ====================================================================== -->
+    <section id="about" class="section hex-ceiling-bg">
+      <div class="wrap">
+        <span class="kicker">01 — About Tasa · Est. 2017</span>
+        <h2 class="section-title">Modern-industrial grit meets classic barbershop craft.</h2>
+
+        <div class="about-layout">
+          <div>
+            <div class="wood-frame">
+              <img
+                src="images/04-shop-gallery.jpg"
+                alt="Tasa Barbershop raw concrete reception wall with 3D black TASA BARBERSHOP CUT X SHAVE X BREW emblem and wood slat divider"
+                class="about-img"
+                style="aspect-ratio: 4 / 3;"
+              />
+              <div class="photo-caption">
+                <span>Reception Wall · Concrete &amp; Wood Slats</span>
+                <span>Est. 2017 · Marikina</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="editorial-lead">
+              Started on E. Santos Street in Concepcion Uno, Marikina in 2017, Tasa is a boutique barbershop built to feel like a neighborhood sanctuary.
+            </p>
+            <p class="editorial-body">
+              Step past the spinning red-white-blue barber pole into raw grey cement walls, warm wood paneling, and a black ceiling lit by signature white hexagonal LED strips, black dome pendants, and vintage lantern sconces. Settle into a brown leather Chesterfield sofa beside potted snake plants before stepping into a striped black-and-white TASA cape.
+            </p>
+            <p class="editorial-body">
+              Every detail at the station is purposeful—wooden shelves stacked with rolled white towels, gold clippers and shears, locally crafted chairs on chrome hydraulic bases, and barbers in crisp black-and-white uniforms.
+            </p>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. SERVICES / MENU (SEPT–NOV 2026 PHP RATES)
+         ====================================================================== -->
+    <section id="services" class="section section-deep">
+      <div class="wrap">
+        <span class="kicker">02 — Services &amp; Rates (PHP)</span>
+        <h2 class="section-title">In-Shop Grooming Menu</h2>
+
+        <div class="tab-bar" role="tablist" aria-label="Service categories">
+          <button type="button" class="tab-btn" role="tab" aria-selected="true" data-cat="all">Full Menu</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="haircut">Haircut</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="shaving">Shaving</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="perming">Perming</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="treatment">Treatment &amp; Color</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="massage">Massage</button>
+        </div>
+
+        <div class="ledger-layout">
+          <div class="printed-menu">
+            <div class="printed-menu-head">
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;">Tasa Barbershop</div>
+                <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; opacity: 0.72; margin-top: 5px;">WE CUT, WE SHAVE, WE BREW · EST. 2017</div>
+              </div>
+              <div class="menu-stamp">ME<br />NU</div>
+            </div>
+
+            <div id="serviceLedgerList"></div>
+
+            <div class="menu-footnote">
+              Rates reflect in-shop menu boards (Sept–Nov 2026). Small branch differences exist—for example, P. Tuazon lists Deluxe Tasa at PHP 550. Confirm final rates at your chosen branch.
+            </div>
+          </div>
+
+          <!-- Live Chair Sheet Sidebar -->
+          <aside class="chair-sheet">
+            <span class="kicker">Your Chair Sheet</span>
+            <h3>Visit Summary</h3>
+            <p class="mono-meta" style="line-height: 1.6;">
+              Add services, packages, or counter products to estimate your visit and carry them into your booking slip.
+            </p>
+
+            <ul id="chairSheetList" class="chair-sheet-list"></ul>
+
+            <div class="sheet-total-row">
+              <span>Estimated Total</span>
+              <span id="sheetTotalAmt" class="sheet-total-amt">PHP 0</span>
+            </div>
+
+            <button type="button" id="openBookingFromSheet" class="btn btn-neon" style="width: 100%;">
+              Reserve With This Sheet
+            </button>
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--hairline);">
+              <img src="images/03-shop-gallery.jpg" alt="Tasa Signature iced coffee cup" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--wood-rule); margin-bottom: 12px;" />
+              <span class="kicker">We Brew</span>
+              <p class="mono-meta" style="margin: 6px 0 0; line-height: 1.55;">Tasa Signature iced coffee poured fresh while you wait for your chair.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. PACKAGES (3 CURATED PACKAGES)
+         ====================================================================== -->
+    <section id="packages" class="section">
+      <div class="wrap">
+        <span class="kicker">03 — Curated Combos</span>
+        <h2 class="section-title">Tasa Grooming Packages</h2>
+
+        <div class="packages-grid">
+          <article class="package-col">
+            <div>
+              <span class="kicker">Package 01</span>
+              <h3 style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 8px 0 0;">Cut, Shave &amp; Unwind</h3>
+              <div class="package-price">PHP 1,000</div>
+              <ul class="package-list">
+                <li>Deluxe Tasa (Haircut, hot towel, moisturizer, massage, style)</li>
+                <li>Signature Shave</li>
+                <li>Head Massage</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-outline pkg-add-btn" data-pkg-id="pkg-1" style="width: 100%;">
+              Add Package 1 to Sheet
+            </button>
+          </article>
+
+          <article class="package-col featured">
+            <div>
+              <span class="kicker" style="color: var(--neon);">Package 02 · Full Reset</span>
+              <h3 style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 8px 0 0;">Cut, Shave &amp; Scalp</h3>
+              <div class="package-price">PHP 1,750</div>
+              <ul class="package-list">
+                <li>Deluxe Tasa (Haircut, hot towel, moisturizer, massage, style)</li>
+                <li>Signature Shave</li>
+                <li>Scalp Treatment (Deep conditioning + anti-dandruff)</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-primary pkg-add-btn" data-pkg-id="pkg-2" style="width: 100%;">
+              Add Package 2 to Sheet
+            </button>
+          </article>
+
+          <article class="package-col">
+            <div>
+              <span class="kicker">Package 03</span>
+              <h3 style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 8px 0 0;">Cut, Shave &amp; Color</h3>
+              <div class="package-price">PHP 1,550</div>
+              <ul class="package-list">
+                <li>Deluxe Tasa (Haircut, hot towel, moisturizer, massage, style)</li>
+                <li>Signature Shave</li>
+                <li>Deluxe Organic Hair Color (Covering white hair)</li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-outline pkg-add-btn" data-pkg-id="pkg-3" style="width: 100%;">
+              Add Package 3 to Sheet
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. BRANCHES (8 BRANCHES WITH ADDRESSES + GOOGLE MAPS LINKS)
+         ====================================================================== -->
+    <section id="branches" class="section section-deep">
+      <div class="wrap">
+        <span class="kicker">04 — Locations</span>
+        <h2 class="section-title">8 Branches Across The East &amp; QC</h2>
+
+        <div class="tab-bar" role="tablist" aria-label="Filter branches by city">
+          <button type="button" class="tab-btn city-btn" role="tab" aria-selected="true" data-city="all">All (8)</button>
+          <button type="button" class="tab-btn city-btn" role="tab" aria-selected="false" data-city="Marikina">Marikina (2)</button>
+          <button type="button" class="tab-btn city-btn" role="tab" aria-selected="false" data-city="Quezon City">Quezon City (4)</button>
+          <button type="button" class="tab-btn city-btn" role="tab" aria-selected="false" data-city="Antipolo">Antipolo (1)</button>
+          <button type="button" class="tab-btn city-btn" role="tab" aria-selected="false" data-city="Pasig">Pasig (1)</button>
+        </div>
+
+        <div class="branches-split">
+          <div id="branchList" class="branch-list" role="listbox" aria-label="Tasa branches"></div>
+          <div id="branchPanel" class="branch-panel" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. GALLERY
+         ====================================================================== -->
+    <section id="gallery" class="section hex-ceiling-bg">
+      <div class="wrap">
+        <span class="kicker">05 — Inside Tasa</span>
+        <h2 class="section-title">The Floor, The Lounge, The Counter</h2>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. PREMIUM PRODUCTS FOR SALE (COUNTER SHELF)
+         ====================================================================== -->
+    <section id="products" class="section section-deep">
+      <div class="wrap">
+        <span class="kicker">06 — On The Counter Shelf</span>
+        <h2 class="section-title">Premium Products For Sale</h2>
+        <p class="editorial-body" style="margin-top: 12px; max-width: 62ch;">
+          House grooming staples seen across Tasa counters—including <strong>LUNAS</strong> Massage Balm, <strong>WOLF’S DUST</strong>, <strong>AGUA</strong> Texture Volume Spray, <strong>TINDI</strong> Volumizing Hair Cream, <strong>BULL / SHARK / LION / INDIO</strong> pomade tins, and <strong>Sultan Coffee Grounds</strong>.
+        </p>
+
+        <div class="tab-bar" role="tablist" aria-label="Filter products">
+          <button type="button" class="tab-btn prod-tab" role="tab" aria-selected="true" data-prod-cat="all">All Products (9)</button>
+          <button type="button" class="tab-btn prod-tab" role="tab" aria-selected="false" data-prod-cat="styling">Pomades &amp; Styling (6)</button>
+          <button type="button" class="tab-btn prod-tab" role="tab" aria-selected="false" data-prod-cat="lifestyle">Balm, Care &amp; Coffee (3)</button>
+        </div>
+
+        <div id="productsGrid" class="products-grid"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         8. FRANCHISING CTA
+         ====================================================================== -->
+    <section id="franchising" class="section">
+      <div class="wrap">
+        <div class="franchise-box hex-ceiling-bg">
+          <div>
+            <span class="kicker" style="color: #FF7A1A;">07 — Franchising &amp; General Inquiries</span>
+            <h2 class="section-title" style="color: #F5F1EA;">Bring Tasa to your neighborhood.</h2>
+            <p style="font-size: 15px; line-height: 1.7; color: rgba(245, 241, 234, 0.8); margin: 18px 0 26px; max-width: 50ch;">
+              From our original E. Santos shop in 2017 to our newest branch at UP Diliman Shopping Center, Tasa continues to expand across Metro Manila and Rizal. Reach out directly for franchising packets, site requirements, or brand partnerships.
+            </p>
+            <div class="panel-actions">
+              <button type="button" id="openFranchiseBtn" class="btn btn-neon">Prepare Franchise Inquiry</button>
+              <button type="button" id="copyFranchiseEmail" class="btn btn-hero-ghost">Copy Email</button>
+            </div>
+          </div>
+
+          <div class="franchise-contact-row">
+            <div>
+              <div class="mono-meta" style="color: #A67C52; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.14em;">Email</div>
+              <a href="mailto:tasabarbershop@gmail.com" class="franchise-value">tasabarbershop@gmail.com</a>
+            </div>
+            <div>
+              <div class="mono-meta" style="color: #A67C52; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.14em;">SMS / Call</div>
+              <div class="franchise-value">0955-330-3380</div>
+            </div>
+            <button type="button" id="copyFranchisePhone" class="btn btn-hero-ghost" style="align-self: flex-start; padding: 9px 14px; font-size: 10.5px;">
+              Copy 0955-330-3380
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       9. FOOTER
+       ======================================================================== -->
+  <div class="barber-rule" aria-hidden="true"></div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-wordmark" style="margin-bottom: 12px;">TASA BARBERSHOP</div>
+          <p style="font-size: 13.5px; color: rgba(245, 241, 234, 0.72); line-height: 1.7; margin: 0 0 14px;">
+            We Cut, We Shave, We Brew. Boutique modern-industrial classic barbershop founded in Marikina in 2017.
+          </p>
+          <div class="mono-meta" style="color: #FF7A1A;">EST. 2017 · 8 BRANCHES</div>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Main Socials</h3>
+          <ul class="footer-list">
+            <li>Instagram: <a href="https://www.instagram.com/tasabarbershop/" target="_blank" rel="noopener noreferrer">@tasabarbershop</a> (~12–13K)</li>
+            <li>Facebook: <a href="https://www.facebook.com/tasabarbershop" target="_blank" rel="noopener noreferrer">Tasa Barbershop (@tasabarbershop)</a> (~56K)</li>
+            <li>TikTok: <a href="https://www.tiktok.com/@tasabarbershop" target="_blank" rel="noopener noreferrer">@tasabarbershop</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Branch Pages</h3>
+          <ul class="footer-list">
+            <li>IG: @tasaesantos · @tasalilac</li>
+            <li>IG: @tasaxavierville · @tasawhiteplains</li>
+            <li>FB: E.Santos · Xavierville · Lilac · P.Tuazon</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Hours &amp; Contact</h3>
+          <ul class="footer-list">
+            <li>P. Tuazon: Mon–Sun, 10:00 AM – 8:00 PM</li>
+            <li>Other branches: Similar daytime hours (confirm per branch)</li>
+            <li>Email: <a href="mailto:tasabarbershop@gmail.com">tasabarbershop@gmail.com</a></li>
+            <li>SMS / Call: 0955-330-3380</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Tasa Barbershop · We Cut, We Shave, We Brew</span>
+        <span>Marikina · Quezon City · Pasig · Antipolo</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       BOOKING & FRANCHISE DRAWER
+       ======================================================================== -->
+  <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="bookingDrawer" class="drawer" aria-hidden="true" aria-labelledby="drawerTitle">
+    <div class="drawer-head">
+      <div>
+        <span id="drawerKicker" class="kicker">Chair Reservation</span>
+        <h2 id="drawerTitle" style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 4px 0 0;">
+          Reserve Your Seat
+        </h2>
+      </div>
+      <button type="button" id="closeDrawerBtn" class="btn btn-outline" style="padding: 8px 12px;" aria-label="Close drawer">
+        Close ×
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Booking Form View -->
+      <form id="bookingForm" novalidate>
+        <div id="formError" class="form-error" role="alert"></div>
+
+        <div class="field">
+          <label for="bookingBranch">Branch</label>
+          <select id="bookingBranch" name="branch"></select>
+        </div>
+
+        <div class="field">
+          <label for="bookingService">Primary Service or Package</label>
+          <select id="bookingService" name="service"></select>
+        </div>
+
+        <div class="field">
+          <label for="bookingDate">Preferred Date</label>
+          <input type="date" id="bookingDate" name="date" />
+        </div>
+
+        <div class="field">
+          <label>Preferred Time Slot <span id="branchHoursHint" class="mono-meta"></span></label>
+          <div id="slotGrid" class="slot-grid" role="radiogroup" aria-label="Available time slots"></div>
+        </div>
+
+        <div class="field">
+          <label for="bookingName">Your Name</label>
+          <input type="text" id="bookingName" name="name" placeholder="Nikola Jokic" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="bookingNotes">Cut Notes / Barber Preference (Optional)</label>
+          <textarea id="bookingNotes" name="notes" rows="2" placeholder="Make me look like the 3x NBA MVP, Nikola Jokic. Never like Devin Booker."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-neon" style="width: 100%;">
+          Prepare Chair Slip
+        </button>
+      </form>
+
+      <!-- Franchise Inquiry Form View -->
+      <form id="franchiseForm" style="display: none;" novalidate>
+        <div id="franchiseError" class="form-error" role="alert"></div>
+        <div class="field">
+          <label for="fName">Full Name</label>
+          <input type="text" id="fName" placeholder="Your full name" />
+        </div>
+        <div class="field">
+          <label for="fLocation">Proposed Location / City</label>
+          <input type="text" id="fLocation" placeholder="e.g. Kapitolyo, Pasig or Ortigas" />
+        </div>
+        <div class="field">
+          <label for="fPhone">Mobile Number</label>
+          <input type="text" id="fPhone" placeholder="09XX-XXX-XXXX" />
+        </div>
+        <div class="field">
+          <label for="fNotes">Space &amp; Background Notes</label>
+          <textarea id="fNotes" rows="3" placeholder="Tell Tasa about your proposed space, target opening, or inquiry"></textarea>
+        </div>
+        <button type="submit" class="btn btn-neon" style="width: 100%;">
+          Generate Franchise Brief
+        </button>
+      </form>
+
+      <div id="drawerConfirmation" style="display: none;"></div>
+    </div>
+  </aside>
+
+  <!-- Gallery Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Gallery photo preview">
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="" />
+      <div class="lightbox-bar">
+        <span id="lightboxCaption" class="mono-meta" style="color: #F5F1EA;"></span>
+        <button type="button" id="closeLightboxBtn" class="btn btn-hero-ghost" style="padding: 8px 14px;">Close ×</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         GROUNDED DATA (From User's Verified Tasa Research + Shop Photos)
+         ---------------------------------------------------------------------- */
+      const MENU_GROUPS = [
+        {
+          key: 'haircut',
+          label: 'Haircut',
+          items: [
+            { id: 'sig-tasa', name: 'Signature Tasa', price: 400, priceText: 'PHP 400', desc: 'Premium haircut, complimentary massage, finish with style.' },
+            { id: 'deluxe-tasa', name: 'Deluxe Tasa', price: 500, priceText: 'PHP 500', desc: 'Premium haircut, hot towel, facial moisturizer, complimentary massage, finish with style. (PHP 550 at P. Tuazon.)' },
+            { id: 'precision-tasa', name: 'Precision Tasa', price: 600, priceText: 'PHP 600', desc: 'Precise long styled cut using advanced shear techniques.' },
+            { id: 'junior-tasa', name: 'Junior Tasa', price: 500, priceText: 'PHP 500', desc: 'Tailored haircut for ages 1–5 years old.' },
+            { id: 'student-tasa', name: 'Student Tasa', price: 350, priceText: 'PHP 350 net', desc: 'Present valid school ID to claim.' },
+            { id: 'after-rinse', name: 'Add-on: After Cut Rinse', price: 50, priceText: '+ PHP 50', desc: 'Refreshing shampoo and conditioner rinse at the station basin.' }
+          ]
+        },
+        {
+          key: 'shaving',
+          label: 'Shaving',
+          items: [
+            { id: 'sig-shave', name: 'Signature Shave', price: 300, priceText: 'PHP 300+', desc: 'Classic straight-razor shave starting at PHP 300.' },
+            { id: 'beard-sculpt', name: 'Beard Sculpting', price: 300, priceText: 'PHP 300+', desc: 'Detailed beard shaping and crisp line-up starting at PHP 300.' },
+            { id: 'head-shave', name: 'Head Shave', price: 400, priceText: 'PHP 400', desc: 'Close, even straight-razor head shave.' }
+          ]
+        },
+        {
+          key: 'perming',
+          label: 'Perming',
+          items: [
+            { id: 'korean-perm', name: 'Korean Perm', price: 2500, priceText: 'PHP 2,500+', desc: 'Soft, natural-looking waves starting at PHP 2,500.' },
+            { id: 'down-perm', name: 'Down Perm', price: 1500, priceText: 'PHP 1,500+', desc: 'Flattens stubborn side hair for a cleaner silhouette starting at PHP 1,500.' }
+          ]
+        },
+        {
+          key: 'treatment',
+          label: 'Hair Treatment & Color',
+          items: [
+            { id: 'scalp-tx', name: 'Scalp Treatment', price: 1000, priceText: 'PHP 1,000', desc: 'Deep conditioning + anti-dandruff scalp therapy.' },
+            { id: 'organic-color', name: 'Deluxe Organic Color', price: 800, priceText: 'PHP 800', desc: 'Rich, natural-looking color for covering white hair.' },
+            { id: 'highlights', name: 'Highlights', price: 1800, priceText: 'PHP 1,800+', desc: 'Dimensional hair highlights starting at PHP 1,800.' },
+            { id: 'fashion-color', name: 'Fashion Color', price: 3500, priceText: 'PHP 3,500+', desc: 'Custom fashion color starting at PHP 3,500. By appointment only.' }
+          ]
+        },
+        {
+          key: 'massage',
+          label: 'Massage',
+          items: [
+            { id: 'back-massage', name: 'Back Massage', price: 250, priceText: 'PHP 250', desc: 'Relaxing upper-back and shoulder massage.' },
+            { id: 'head-massage', name: 'Head Massage', price: 250, priceText: 'PHP 250', desc: 'Tension-relieving scalp and head massage.' }
+          ]
+        }
+      ];
+
+      const PACKAGES = [
+        { id: 'pkg-1', name: 'Package 1 (Deluxe + Shave + Head Massage)', price: 1000, priceText: 'PHP 1,000' },
+        { id: 'pkg-2', name: 'Package 2 (Deluxe + Shave + Scalp Treatment)', price: 1750, priceText: 'PHP 1,750' },
+        { id: 'pkg-3', name: 'Package 3 (Deluxe + Shave + Organic Color)', price: 1550, priceText: 'PHP 1,550' }
+      ];
+
+      const PRODUCTS = [
+        { id: 'prod-oil-pomade', cat: 'styling', house: 'BULL / SHARK / LION / INDIO', name: 'Oil Based Pomade', price: 250, desc: 'Classic high-shine, strong-hold pomade tin for slick backs and timeless contours.' },
+        { id: 'prod-water-pomade', cat: 'styling', house: 'BULL / SHARK / LION / INDIO', name: 'Water Based Pomade', price: 300, desc: 'Clean, easy-rinse pomade tin offering dependable hold without heavy buildup.' },
+        { id: 'prod-clay-pomade', cat: 'styling', house: 'BULL / SHARK / LION / INDIO', name: 'Clay Based Pomade', price: 350, desc: 'Matte, textured hold built for natural movement and modern crops.' },
+        { id: 'prod-sea-salt', cat: 'styling', house: 'AGUA', name: 'Sea Salt Texture Spray', price: 350, desc: 'AGUA Texture Volume Spray for effortless grit, body, and pre-styling lift.' },
+        { id: 'prod-volume-powder', cat: 'styling', house: "WOLF'S DUST", name: 'Texture Volume Powder', price: 300, desc: "WOLF'S DUST matte styling powder for instant root volume and dry texture." },
+        { id: 'prod-hair-cream', cat: 'styling', house: 'TINDI', name: 'Volumizing Hair Cream', price: 500, desc: 'TINDI Volumizing Hair Cream for soft control and natural fullness.' },
+        { id: 'prod-balm', cat: 'lifestyle', house: 'LUNAS', name: 'Massage Balm', price: 200, desc: 'LUNAS soothing massage balm used in-shop and available to take home.' },
+        { id: 'prod-sneaker', cat: 'lifestyle', house: 'TASA COUNTER', name: 'Sneaker Cleaner', price: 500, desc: 'Keep your kicks as sharp as your fade.' },
+        { id: 'prod-coffee', cat: 'lifestyle', house: 'SULTAN', name: 'Sultan Coffee Grounds', price: 300, desc: 'Bring the "We Brew" experience home with Sultan Coffee Grounds.' }
+      ];
+
+      const BRANCHES = [
+        {
+          id: 'e-santos',
+          num: '01',
+          flag: 'Main · Est. 2017',
+          name: 'Concepcion Uno / E. Santos',
+          city: 'Marikina',
+          address: '92 E. Santos St., Concepcion Uno, Marikina City',
+          landmark: "In front of Pidong's",
+          hours: 'Confirm per branch (typically 10:00 AM – 7:00 PM daily)',
+          openHour: 10,
+          closeHour: 19,
+          phone: '+63 2 8637 1742',
+          social: 'IG @tasaesantos · FB Tasa Barbershop - E.Santos',
+          mapsQuery: 'Tasa Barbershop 92 E. Santos St Concepcion Uno Marikina'
+        },
+        {
+          id: 'xavierville',
+          num: '02',
+          flag: '',
+          name: 'Xavierville',
+          city: 'Quezon City',
+          address: 'Studio A Commercial Unit 103, Xavierville Avenue, corner Esteban Abada St., Brgy. Loyola Heights, Quezon City',
+          landmark: 'Studio A Commercial, Katipunan / Loyola Heights',
+          hours: 'Confirm per branch (typically 10:00 AM – 8:00 PM daily)',
+          openHour: 10,
+          closeHour: 20,
+          phone: '+63 977 467 6244',
+          social: 'IG @tasaxavierville · FB Tasa Barbershop - Xavierville',
+          mapsQuery: 'Tasa Barbershop Studio A Xavierville Avenue Quezon City'
+        },
+        {
+          id: 'lilac',
+          num: '03',
+          flag: '',
+          name: 'Lilac — SSS Village',
+          city: 'Marikina',
+          address: '81 Lilac St., SSS Village, Concepcion Dos, Marikina City',
+          landmark: 'Beside Dapo at Tisa',
+          hours: 'Confirm per branch (typically 10:00 AM – 8:00 PM)',
+          openHour: 10,
+          closeHour: 20,
+          phone: '+63 954 351 7159',
+          social: 'IG @tasalilac · FB Tasa Barbershop - Lilac',
+          mapsQuery: 'Tasa Barbershop 81 Lilac St SSS Village Marikina'
+        },
+        {
+          id: 'antipolo',
+          num: '04',
+          flag: '',
+          name: 'Antipolo',
+          city: 'Antipolo',
+          address: 'Lot 1 Block 1, Decoro Building, Unit 301, L. Sumulong Memorial Circle, Antipolo City, Rizal 1870',
+          landmark: 'Decoro Building, L. Sumulong Memorial Circle',
+          hours: 'Confirm per branch (typically 10:00 AM – 9:00 PM daily)',
+          openHour: 10,
+          closeHour: 21,
+          phone: '+63 945 971 7399',
+          social: 'IG @tasabarbershop',
+          mapsQuery: 'Tasa Barbershop Decoro Building L. Sumulong Memorial Circle Antipolo'
+        },
+        {
+          id: 'whiteplains',
+          num: '05',
+          flag: '',
+          name: 'Whiteplains',
+          city: 'Quezon City',
+          address: '144 Katipunan Avenue, St. Ignatius, Quezon City',
+          landmark: 'Katipunan Avenue, St. Ignatius',
+          hours: 'Confirm per branch (typically 10:00 AM – 8:00 PM daily)',
+          openHour: 10,
+          closeHour: 20,
+          phone: '+63 927 706 8646',
+          social: 'IG @tasawhiteplains',
+          mapsQuery: 'Tasa Barbershop 144 Katipunan Avenue St. Ignatius Quezon City'
+        },
+        {
+          id: 'p-tuazon',
+          num: '06',
+          flag: '',
+          name: 'P. Tuazon',
+          city: 'Quezon City',
+          address: 'Avire Towers, 27 P. Tuazon Blvd., Project 4, Quezon City',
+          landmark: 'Avire Towers, Project 4',
+          hours: 'Mon–Sun: 10:00 AM – 8:00 PM',
+          openHour: 10,
+          closeHour: 20,
+          phone: '+63 945 647 5153',
+          social: 'FB Tasa Barbershop - P.Tuazon',
+          mapsQuery: 'Tasa Barbershop Avire Towers 27 P. Tuazon Blvd Quezon City'
+        },
+        {
+          id: 'c-raymundo',
+          num: '07',
+          flag: '1st Anniv · Nov 2026',
+          name: 'C. Raymundo — Pasig',
+          city: 'Pasig',
+          address: 'C. Raymundo Avenue, Pasig City (confirm exact unit/street with TASA)',
+          landmark: 'C. Raymundo Avenue corridor, Pasig',
+          hours: 'Confirm per branch (typically 10:00 AM – 9:00 PM daily)',
+          openHour: 10,
+          closeHour: 21,
+          phone: '+63 917 120 1903',
+          social: 'IG @tasabarbershop',
+          mapsQuery: 'Tasa Barbershop C. Raymundo Avenue Pasig City'
+        },
+        {
+          id: 'up-diliman',
+          num: '08',
+          flag: 'New · Sept 2026',
+          name: 'UP Diliman',
+          city: 'Quezon City',
+          address: 'UP Shopping Center, UP Diliman, Quezon City',
+          landmark: 'Soft opening 23 Sept 2026 · UP Shopping Center',
+          hours: 'Confirm latest hours with branch / @tasabarbershop',
+          openHour: 10,
+          closeHour: 20,
+          phone: '0955-330-3380 (General Inquiry)',
+          social: 'IG @tasabarbershop',
+          mapsQuery: 'UP Shopping Center UP Diliman Quezon City'
+        }
+      ];
+
+      const GALLERY_ITEMS = [
+        {
+          src: 'images/05-shop-gallery.jpg',
+          title: 'Lantern Sconces & Floating Stations',
+          meta: 'Raw concrete · Vintage lanterns · Two-tone leather'
+        },
+        {
+          src: 'images/02-stations-daylight.jpg',
+          title: 'Built-In Basin Stations',
+          meta: 'Wood-framed mirrors · Ceramic sinks · Chrome bases'
+        },
+        {
+          src: 'images/04-shop-gallery.jpg',
+          title: 'The Reception Wall',
+          meta: '3D TASA emblem · Wood slat divider · In-shop menu'
+        },
+        {
+          src: 'images/03-shop-gallery.jpg',
+          title: 'Tasa Signature Brew',
+          meta: 'We Cut · We Shave · We Brew'
+        }
+      ];
+
+      /* Build lookup map of all selectable items (services, packages, products) */
+      const ALL_ITEMS = {};
+      MENU_GROUPS.forEach((g) => g.items.forEach((i) => { ALL_ITEMS[i.id] = i; }));
+      PACKAGES.forEach((p) => { ALL_ITEMS[p.id] = p; });
+      PRODUCTS.forEach((p) => { ALL_ITEMS[p.id] = { id: p.id, name: p.name + ' (' + p.house + ')', price: p.price, priceText: 'PHP ' + p.price }; });
+
+      /* ----------------------------------------------------------------------
+         STATE
+         ---------------------------------------------------------------------- */
+      const state = {
+        ambience: 'evening',
+        activeMenuCat: 'all',
+        activeCity: 'all',
+        activeBranchId: 'e-santos',
+        activeProdCat: 'all',
+        sheetIds: ['deluxe-tasa'],
+        selectedSlot: '11:00 AM',
+        drawerMode: 'booking'
+      };
+
+      /* ----------------------------------------------------------------------
+         DOM ELEMENTS
+         ---------------------------------------------------------------------- */
+      const htmlEl = document.documentElement;
+      const ambienceToggle = document.getElementById('ambienceToggle');
+      const ambienceLabel = document.getElementById('ambienceLabel');
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const serviceLedgerList = document.getElementById('serviceLedgerList');
+      const chairSheetList = document.getElementById('chairSheetList');
+      const sheetTotalAmt = document.getElementById('sheetTotalAmt');
+      const branchListEl = document.getElementById('branchList');
+      const branchPanelEl = document.getElementById('branchPanel');
+      const galleryGrid = document.getElementById('galleryGrid');
+      const productsGrid = document.getElementById('productsGrid');
+      const drawerBackdrop = document.getElementById('drawerBackdrop');
+      const bookingDrawer = document.getElementById('bookingDrawer');
+      const drawerKicker = document.getElementById('drawerKicker');
+      const drawerTitle = document.getElementById('drawerTitle');
+      const bookingForm = document.getElementById('bookingForm');
+      const franchiseForm = document.getElementById('franchiseForm');
+      const drawerConfirmation = document.getElementById('drawerConfirmation');
+      const bookingBranchSelect = document.getElementById('bookingBranch');
+      const bookingServiceSelect = document.getElementById('bookingService');
+      const bookingDateInput = document.getElementById('bookingDate');
+      const branchHoursHint = document.getElementById('branchHoursHint');
+      const slotGrid = document.getElementById('slotGrid');
+      const formError = document.getElementById('formError');
+      const franchiseError = document.getElementById('franchiseError');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const toastEl = document.getElementById('toast');
+
+      let toastTimer = null;
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('show');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+      }
+
+      function copyText(text, successMsg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => fallbackCopy(text, successMsg));
+        } else {
+          fallbackCopy(text, successMsg);
+        }
+      }
+
+      function fallbackCopy(text, successMsg) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast(successMsg);
+        } catch (e) {
+          showToast('Copy unavailable.');
+        }
+        document.body.removeChild(ta);
+      }
+
+      function formatPHP(num) {
+        return 'PHP ' + Number(num || 0).toLocaleString('en-PH');
+      }
+
+      function toggleSheetItem(id) {
+        if (state.sheetIds.includes(id)) {
+          state.sheetIds = state.sheetIds.filter((x) => x !== id);
+        } else {
+          state.sheetIds.push(id);
+          const item = ALL_ITEMS[id];
+          if (item) showToast('Added: ' + item.name);
+        }
+        renderMenu();
+        renderProducts();
+        renderPackageButtons();
+        renderChairSheet();
+      }
+
+      /* ----------------------------------------------------------------------
+         AMBIENCE TOGGLE & MOBILE NAV
+         ---------------------------------------------------------------------- */
+      ambienceToggle.addEventListener('click', () => {
+        state.ambience = state.ambience === 'evening' ? 'daylight' : 'evening';
+        htmlEl.setAttribute('data-ambience', state.ambience);
+        ambienceLabel.textContent = state.ambience === 'evening' ? 'Evening' : 'Daylight';
+        showToast(state.ambience === 'evening' ? 'Lighting: Evening Dome Lamps & Neon' : 'Lighting: Daylight Concrete & Wood');
+      });
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('open');
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('open');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ----------------------------------------------------------------------
+         SERVICES MENU & CHAIR SHEET
+         ---------------------------------------------------------------------- */
+      function renderMenu() {
+        const groups = state.activeMenuCat === 'all'
+          ? MENU_GROUPS
+          : MENU_GROUPS.filter((g) => g.key === state.activeMenuCat);
+
+        serviceLedgerList.innerHTML = groups.map((g) => {
+          const rows = g.items.map((item) => {
+            const selected = state.sheetIds.includes(item.id);
+            return (
+              '<div class="service-row">' +
+                '<div>' +
+                  '<h3 class="service-name">' + item.name + '</h3>' +
+                  '<p class="service-desc">' + item.desc + '</p>' +
+                '</div>' +
+                '<div class="service-right">' +
+                  '<span class="service-price">' + item.priceText + '</span>' +
+                  '<button type="button" class="add-chip-btn ' + (selected ? 'selected' : '') + '" data-item-id="' + item.id + '">' +
+                    (selected ? 'Added ✓' : '+ Add') +
+                  '</button>' +
+                '</div>' +
+              '</div>'
+            );
+          }).join('');
+          return '<h4 class="menu-group-heading">' + g.label + '</h4>' + rows;
+        }).join('');
+
+        serviceLedgerList.querySelectorAll('.add-chip-btn').forEach((btn) => {
+          btn.addEventListener('click', () => toggleSheetItem(btn.getAttribute('data-item-id')));
+        });
+      }
+
+      function renderChairSheet() {
+        if (state.sheetIds.length === 0) {
+          chairSheetList.innerHTML = '<li style="color: var(--ink-muted); font-size: 13px;">Your sheet is empty. Select a cut, package, or product.</li>';
+          sheetTotalAmt.textContent = 'PHP 0';
+          return;
+        }
+        let total = 0;
+        chairSheetList.innerHTML = state.sheetIds.map((id) => {
+          const item = ALL_ITEMS[id];
+          if (!item) return '';
+          total += item.price;
+          return (
+            '<li>' +
+              '<span>' + item.name + ' <span class="mono-meta">(' + formatPHP(item.price) + ')</span></span>' +
+              '<button type="button" class="remove-item-btn" data-remove-id="' + id + '">Remove</button>' +
+            '</li>'
+          );
+        }).join('');
+
+        sheetTotalAmt.textContent = formatPHP(total);
+
+        chairSheetList.querySelectorAll('.remove-item-btn').forEach((btn) => {
+          btn.addEventListener('click', () => toggleSheetItem(btn.getAttribute('data-remove-id')));
+        });
+      }
+
+      document.querySelectorAll('#services .tab-btn').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          state.activeMenuCat = tab.getAttribute('data-cat');
+          document.querySelectorAll('#services .tab-btn').forEach((t) => t.setAttribute('aria-selected', 'false'));
+          tab.setAttribute('aria-selected', 'true');
+          renderMenu();
+        });
+      });
+
+      /* Packages */
+      function renderPackageButtons() {
+        document.querySelectorAll('.pkg-add-btn').forEach((btn) => {
+          const id = btn.getAttribute('data-pkg-id');
+          const selected = state.sheetIds.includes(id);
+          const num = id.split('-')[1];
+          btn.textContent = selected ? 'Package ' + num + ' on Sheet ✓' : 'Add Package ' + num + ' to Sheet';
+        });
+      }
+      document.querySelectorAll('.pkg-add-btn').forEach((btn) => {
+        btn.addEventListener('click', () => toggleSheetItem(btn.getAttribute('data-pkg-id')));
+      });
+
+      /* ----------------------------------------------------------------------
+         8 BRANCHES DIRECTORY
+         ---------------------------------------------------------------------- */
+      function renderBranches() {
+        const list = state.activeCity === 'all'
+          ? BRANCHES
+          : BRANCHES.filter((b) => b.city === state.activeCity);
+
+        if (!list.some((b) => b.id === state.activeBranchId) && list.length > 0) {
+          state.activeBranchId = list[0].id;
+        }
+
+        branchListEl.innerHTML = list.map((b) => {
+          const active = b.id === state.activeBranchId;
+          return (
+            '<button type="button" class="branch-row ' + (active ? 'active' : '') + '" role="option" aria-selected="' + active + '" data-branch-id="' + b.id + '">' +
+              '<span class="branch-num">' + b.num + '</span>' +
+              '<div>' +
+                '<div class="branch-row-name">' + b.name + '</div>' +
+                '<div class="branch-row-city">' + b.city + '</div>' +
+              '</div>' +
+              (b.flag ? '<span class="branch-flag">' + b.flag + '</span>' : '<span class="mono-meta">→</span>') +
+            '</button>'
+          );
+        }).join('');
+
+        branchListEl.querySelectorAll('.branch-row').forEach((row) => {
+          row.addEventListener('click', () => {
+            state.activeBranchId = row.getAttribute('data-branch-id');
+            renderBranches();
+            renderBranchPanel();
+          });
+        });
+
+        renderBranchPanel();
+      }
+
+      function renderBranchPanel() {
+        const b = BRANCHES.find((item) => item.id === state.activeBranchId) || BRANCHES[0];
+        const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(b.mapsQuery);
+
+        branchPanelEl.innerHTML =
+          '<span class="kicker">' + b.city + ' · Branch ' + b.num + (b.flag ? ' · ' + b.flag : '') + '</span>' +
+          '<h3 class="branch-panel-title">' + b.name + '</h3>' +
+          '<table class="spec-table">' +
+            '<tr><th>Address</th><td>' + b.address + '</td></tr>' +
+            '<tr><th>Landmark</th><td>' + b.landmark + '</td></tr>' +
+            '<tr><th>Hours</th><td>' + b.hours + '</td></tr>' +
+            '<tr><th>Contact</th><td>' + b.phone + '</td></tr>' +
+            '<tr><th>Social</th><td>' + b.social + '</td></tr>' +
+          '</table>' +
+          '<div class="panel-actions">' +
+            '<button type="button" class="btn btn-primary" id="bookSelectedBranchBtn">Reserve at Branch</button>' +
+            '<a href="' + mapUrl + '" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Open in Maps ↗</a>' +
+            '<button type="button" class="btn btn-outline" id="copyBranchAddrBtn">Copy Address</button>' +
+          '</div>';
+
+        document.getElementById('bookSelectedBranchBtn').addEventListener('click', () => openBookingDrawer(b.id));
+        document.getElementById('copyBranchAddrBtn').addEventListener('click', () => copyText(b.address, 'Address copied'));
+      }
+
+      document.querySelectorAll('.city-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.activeCity = btn.getAttribute('data-city');
+          document.querySelectorAll('.city-btn').forEach((b) => b.setAttribute('aria-selected', 'false'));
+          btn.setAttribute('aria-selected', 'true');
+          renderBranches();
+        });
+      });
+
+      /* ----------------------------------------------------------------------
+         GALLERY & LIGHTBOX
+         ---------------------------------------------------------------------- */
+      function renderGallery() {
+        galleryGrid.innerHTML = GALLERY_ITEMS.map((g, idx) =>
+          '<button type="button" class="gallery-card" data-gallery-idx="' + idx + '">' +
+            '<img src="' + g.src + '" alt="' + g.title + '" />' +
+            '<div class="photo-caption">' +
+              '<span>' + g.title + '</span>' +
+              '<span>' + g.meta + '</span>' +
+            '</div>' +
+          '</button>'
+        ).join('');
+
+        galleryGrid.querySelectorAll('.gallery-card').forEach((card) => {
+          card.addEventListener('click', () => {
+            const g = GALLERY_ITEMS[Number(card.getAttribute('data-gallery-idx'))];
+            if (!g) return;
+            lightboxImg.src = g.src;
+            lightboxImg.alt = g.title;
+            lightboxCaption.textContent = g.title + ' — ' + g.meta;
+            lightbox.classList.add('open');
+          });
+        });
+      }
+
+      document.getElementById('closeLightboxBtn').addEventListener('click', () => lightbox.classList.remove('open'));
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('open');
+      });
+
+      /* ----------------------------------------------------------------------
+         PRODUCTS COUNTER SHELF
+         ---------------------------------------------------------------------- */
+      function renderProducts() {
+        const list = state.activeProdCat === 'all'
+          ? PRODUCTS
+          : PRODUCTS.filter((p) => p.cat === state.activeProdCat);
+
+        productsGrid.innerHTML = list.map((p) => {
+          const selected = state.sheetIds.includes(p.id);
+          return (
+            '<article class="product-cell">' +
+              '<div>' +
+                '<div class="product-brand">' + p.house + '</div>' +
+                '<h3 class="product-name">' + p.name + '</h3>' +
+                '<p class="product-note">' + p.desc + '</p>' +
+              '</div>' +
+              '<div class="product-foot">' +
+                '<span class="product-price">PHP ' + p.price + '</span>' +
+                '<button type="button" class="btn ' + (selected ? 'btn-primary' : 'btn-outline') + ' prod-add-btn" data-prod-id="' + p.id + '" style="padding: 8px 13px; font-size: 10px;">' +
+                  (selected ? 'On Sheet ✓' : '+ Add') +
+                '</button>' +
+              '</div>' +
+            '</article>'
+          );
+        }).join('');
+
+        productsGrid.querySelectorAll('.prod-add-btn').forEach((btn) => {
+          btn.addEventListener('click', () => toggleSheetItem(btn.getAttribute('data-prod-id')));
+        });
+      }
+
+      document.querySelectorAll('.prod-tab').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          state.activeProdCat = tab.getAttribute('data-prod-cat');
+          document.querySelectorAll('.prod-tab').forEach((t) => t.setAttribute('aria-selected', 'false'));
+          tab.setAttribute('aria-selected', 'true');
+          renderProducts();
+        });
+      });
+
+      /* ----------------------------------------------------------------------
+         FRANCHISING BUTTONS
+         ---------------------------------------------------------------------- */
+      document.getElementById('copyFranchiseEmail').addEventListener('click', () => copyText('tasabarbershop@gmail.com', 'Copied tasabarbershop@gmail.com'));
+      document.getElementById('copyFranchisePhone').addEventListener('click', () => copyText('0955-330-3380', 'Copied 0955-330-3380'));
+      document.getElementById('openFranchiseBtn').addEventListener('click', openFranchiseDrawer);
+
+      /* ----------------------------------------------------------------------
+         BOOKING & FRANCHISE DRAWER
+         ---------------------------------------------------------------------- */
+      function populateBookingSelects() {
+        bookingBranchSelect.innerHTML = BRANCHES.map((b) =>
+          '<option value="' + b.id + '">' + b.name + ' (' + b.city + ')</option>'
+        ).join('');
+
+        const opts = [];
+        MENU_GROUPS.forEach((g) => g.items.forEach((i) => opts.push('<option value="' + i.id + '">' + i.name + ' — ' + i.priceText + '</option>')));
+        PACKAGES.forEach((p) => opts.push('<option value="' + p.id + '">' + p.name + ' — ' + p.priceText + '</option>'));
+        bookingServiceSelect.innerHTML = opts.join('');
+
+        const now = new Date();
+        bookingDateInput.value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+      }
+
+      function renderSlotsForBranch(branchId) {
+        const b = BRANCHES.find((item) => item.id === branchId) || BRANCHES[0];
+        branchHoursHint.textContent = '(' + b.openHour + ' AM – ' + (b.closeHour - 12) + ' PM)';
+        const slots = [];
+        for (let h = b.openHour; h < b.closeHour; h++) {
+          const suffix = h >= 12 ? 'PM' : 'AM';
+          const displayH = h > 12 ? h - 12 : h;
+          slots.push(displayH + ':00 ' + suffix);
+        }
+        if (!slots.includes(state.selectedSlot)) state.selectedSlot = slots[0];
+        slotGrid.innerHTML = slots.map((slot) =>
+          '<button type="button" class="slot-btn ' + (slot === state.selectedSlot ? 'active' : '') + '" data-slot="' + slot + '">' + slot + '</button>'
+        ).join('');
+
+        slotGrid.querySelectorAll('.slot-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            state.selectedSlot = btn.getAttribute('data-slot');
+            renderSlotsForBranch(bookingBranchSelect.value);
+          });
+        });
+      }
+
+      function openBookingDrawer(branchId) {
+        state.drawerMode = 'booking';
+        drawerKicker.textContent = 'Chair Reservation';
+        drawerTitle.textContent = 'Reserve Your Seat';
+        bookingForm.style.display = 'block';
+        franchiseForm.style.display = 'none';
+        drawerConfirmation.style.display = 'none';
+        formError.style.display = 'none';
+
+        bookingBranchSelect.value = branchId || state.activeBranchId;
+        const firstService = state.sheetIds.find((id) => !id.startsWith('prod-'));
+        if (firstService) bookingServiceSelect.value = firstService;
+
+        renderSlotsForBranch(bookingBranchSelect.value);
+        drawerBackdrop.classList.add('open');
+        bookingDrawer.classList.add('open');
+        bookingDrawer.setAttribute('aria-hidden', 'false');
+      }
+
+      function openFranchiseDrawer() {
+        state.drawerMode = 'franchise';
+        drawerKicker.textContent = 'Franchising & Partnerships';
+        drawerTitle.textContent = 'Franchise Inquiry';
+        bookingForm.style.display = 'none';
+        franchiseForm.style.display = 'block';
+        drawerConfirmation.style.display = 'none';
+        franchiseError.style.display = 'none';
+
+        drawerBackdrop.classList.add('open');
+        bookingDrawer.classList.add('open');
+        bookingDrawer.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeDrawer() {
+        drawerBackdrop.classList.remove('open');
+        bookingDrawer.classList.remove('open');
+        bookingDrawer.setAttribute('aria-hidden', 'true');
+      }
+
+      bookingBranchSelect.addEventListener('change', () => renderSlotsForBranch(bookingBranchSelect.value));
+      document.getElementById('openBookingHeader').addEventListener('click', () => openBookingDrawer());
+      document.getElementById('openBookingHero').addEventListener('click', () => openBookingDrawer());
+      document.getElementById('openBookingFromSheet').addEventListener('click', () => openBookingDrawer());
+      document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
+      drawerBackdrop.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (bookingDrawer.classList.contains('open')) closeDrawer();
+          if (lightbox.classList.contains('open')) lightbox.classList.remove('open');
+        }
+      });
+
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('bookingName').value.trim();
+        const dateVal = bookingDateInput.value;
+        const notes = document.getElementById('bookingNotes').value.trim();
+
+        if (!name) {
+          formError.textContent = 'Please enter your name for the chair slip.';
+          formError.style.display = 'block';
+          return;
+        }
+        if (!dateVal) {
+          formError.textContent = 'Please choose a preferred date.';
+          formError.style.display = 'block';
+          return;
+        }
+        formError.style.display = 'none';
+
+        const branch = BRANCHES.find((b) => b.id === bookingBranchSelect.value) || BRANCHES[0];
+        const primary = ALL_ITEMS[bookingServiceSelect.value];
+        const combinedIds = Array.from(new Set([bookingServiceSelect.value].concat(state.sheetIds)));
+        let estTotal = 0;
+        const names = combinedIds.map((id) => {
+          const it = ALL_ITEMS[id];
+          if (!it) return '';
+          estTotal += it.price;
+          return it.name;
+        }).filter(Boolean);
+
+        const ref = 'TASA-' + Math.floor(1000 + Math.random() * 9000);
+        const safeName = name.replace(/</g, '&lt;');
+        const safeNotes = notes.replace(/</g, '&lt;');
+        const slipText =
+          'TASA BARBERSHOP CHAIR SLIP (' + ref + ')\n' +
+          'Guest: ' + name + '\n' +
+          'Branch: ' + branch.name + ' (' + branch.city + ')\n' +
+          'Items: ' + names.join(', ') + '\n' +
+          'Est. Total: ' + formatPHP(estTotal) + '\n' +
+          'Date & Time: ' + dateVal + ' at ' + state.selectedSlot +
+          (notes ? '\nNotes: ' + notes : '');
+
+        bookingForm.style.display = 'none';
+        drawerConfirmation.style.display = 'block';
+        drawerConfirmation.innerHTML =
+          '<div class="slip-box">' +
+            '<span class="kicker" style="color: var(--neon);">Chair Slip · ' + ref + '</span>' +
+            '<h3 style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 8px 0 14px;">See you in the chair, ' + safeName + '.</h3>' +
+            '<table class="spec-table">' +
+              '<tr><th>Branch</th><td>' + branch.name + '</td></tr>' +
+              '<tr><th>Items</th><td>' + names.join(', ') + '</td></tr>' +
+              '<tr><th>Est. Total</th><td>' + formatPHP(estTotal) + '</td></tr>' +
+              '<tr><th>When</th><td>' + dateVal + ' · ' + state.selectedSlot + '</td></tr>' +
+              '<tr><th>Confirm At</th><td>' + branch.phone + '</td></tr>' +
+              (safeNotes ? '<tr><th>Notes</th><td>' + safeNotes + '</td></tr>' : '') +
+            '</table>' +
+            '<p style="font-size: 13px; color: var(--ink-secondary); line-height: 1.6; margin: 0 0 18px;">' +
+              'Copy this slip and send or call ' + branch.name + ' directly to confirm your slot and final branch rates.' +
+            '</p>' +
+            '<div class="panel-actions">' +
+              '<button type="button" class="btn btn-neon" id="copySlipBtn">Copy Chair Slip</button>' +
+              '<button type="button" class="btn btn-outline" id="editSlipBtn">Edit Details</button>' +
+            '</div>' +
+          '</div>';
+
+        document.getElementById('copySlipBtn').addEventListener('click', () => copyText(slipText, 'Chair slip copied'));
+        document.getElementById('editSlipBtn').addEventListener('click', () => {
+          drawerConfirmation.style.display = 'none';
+          bookingForm.style.display = 'block';
+        });
+      });
+
+      franchiseForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fName = document.getElementById('fName').value.trim();
+        const fLoc = document.getElementById('fLocation').value.trim();
+        const fPhone = document.getElementById('fPhone').value.trim();
+        const fNotes = document.getElementById('fNotes').value.trim();
+
+        if (!fName || !fLoc) {
+          franchiseError.textContent = 'Please enter your name and proposed location.';
+          franchiseError.style.display = 'block';
+          return;
+        }
+        franchiseError.style.display = 'none';
+
+        const brief =
+          'TASA BARBERSHOP FRANCHISE INQUIRY\n' +
+          'Name: ' + fName + '\n' +
+          'Proposed Location: ' + fLoc + '\n' +
+          (fPhone ? 'Mobile: ' + fPhone + '\n' : '') +
+          (fNotes ? 'Notes: ' + fNotes : '');
+
+        franchiseForm.style.display = 'none';
+        drawerConfirmation.style.display = 'block';
+        drawerConfirmation.innerHTML =
+          '<div class="slip-box">' +
+            '<span class="kicker" style="color: var(--neon);">Franchise Brief Ready</span>' +
+            '<h3 style="font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 8px 0 14px;">Ready to send to Tasa.</h3>' +
+            '<table class="spec-table">' +
+              '<tr><th>Email</th><td>tasabarbershop@gmail.com</td></tr>' +
+              '<tr><th>SMS / Call</th><td>0955-330-3380</td></tr>' +
+              '<tr><th>Location</th><td>' + fLoc.replace(/</g, '&lt;') + '</td></tr>' +
+            '</table>' +
+            '<div class="panel-actions">' +
+              '<button type="button" class="btn btn-neon" id="copyFranchiseBrief">Copy Inquiry Brief</button>' +
+              '<a href="mailto:tasabarbershop@gmail.com?subject=Tasa%20Barbershop%20Franchise%20Inquiry&body=' + encodeURIComponent(brief) + '" class="btn btn-outline">Open Email App</a>' +
+            '</div>' +
+          '</div>';
+
+        document.getElementById('copyFranchiseBrief').addEventListener('click', () => copyText(brief, 'Franchise brief copied'));
+      });
+
+      /* ----------------------------------------------------------------------
+         INIT
+         ---------------------------------------------------------------------- */
+      populateBookingSelects();
+      renderMenu();
+      renderChairSheet();
+      renderPackageButtons();
+      renderBranches();
+      renderGallery();
+      renderProducts();
+    })();
+  </script>
+</body>
+</html>
