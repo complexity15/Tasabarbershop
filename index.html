@@ -240,6 +240,35 @@
       gap: 14px;
     }
 
+
+    .brand-logo-img {
+      height: 46px;
+      width: auto;
+      display: block;
+    }
+    .logo-for-light { display: none; }
+    .logo-for-dark { display: block; }
+    html[data-ambience="daylight"] .logo-for-light { display: block; }
+    html[data-ambience="daylight"] .logo-for-dark { display: none; }
+
+    /* Inside printed menu, surface is inverted relative to page ambience */
+    .menu-logo-img {
+      height: 64px;
+      width: auto;
+      display: block;
+    }
+    .menu-logo-dark { display: block; }
+    .menu-logo-light { display: none; }
+    html[data-ambience="daylight"] .menu-logo-dark { display: none; }
+    html[data-ambience="daylight"] .menu-logo-light { display: block; }
+
+    .footer-logo-img {
+      height: 82px;
+      width: auto;
+      display: block;
+      margin-bottom: 16px;
+    }
+
     .brand-lockup {
       display: inline-flex;
       align-items: center;
@@ -1283,14 +1312,8 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a href="#top" class="brand-lockup" aria-label="Tasa Barbershop Home">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <circle cx="6" cy="18" r="2.5"></circle>
-          <circle cx="18" cy="18" r="2.5"></circle>
-          <line x1="7.8" y1="16" x2="17" y2="3"></line>
-          <line x1="16.2" y1="16" x2="7" y2="3"></line>
-        </svg>
-        <span class="brand-wordmark">TASA</span>
-        <span class="brand-sub">Est. 2017</span>
+        <img src="images/tasa-logo-light.png" alt="Tasa Barbershop" class="brand-logo-img logo-for-dark" />
+        <img src="images/tasa-logo-dark.png" alt="Tasa Barbershop" class="brand-logo-img logo-for-light" />
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
@@ -1443,8 +1466,8 @@
           <div class="printed-menu">
             <div class="printed-menu-head">
               <div>
-                <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;">Tasa Barbershop</div>
-                <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; opacity: 0.72; margin-top: 5px;">WE CUT, WE SHAVE, WE BREW · EST. 2017</div>
+                <img src="images/tasa-logo-dark.png" alt="Tasa Barbershop Logo" class="menu-logo-img menu-logo-dark" />
+                <img src="images/tasa-logo-light.png" alt="Tasa Barbershop Logo" class="menu-logo-img menu-logo-light" />
               </div>
               <div class="menu-stamp">ME<br />NU</div>
             </div>
@@ -1646,7 +1669,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <div class="brand-wordmark" style="margin-bottom: 12px;">TASA BARBERSHOP</div>
+          <img src="images/tasa-logo-light.png" alt="Tasa Barbershop" class="footer-logo-img" />
           <p style="font-size: 13.5px; color: rgba(245, 241, 234, 0.72); line-height: 1.7; margin: 0 0 14px;">
             We Cut, We Shave, We Brew. Boutique modern-industrial classic barbershop founded in Marikina in 2017.
           </p>
